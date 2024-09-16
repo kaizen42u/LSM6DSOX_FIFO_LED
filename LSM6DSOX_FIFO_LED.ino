@@ -31,7 +31,7 @@ static int IMULoggingCB(const char *str)
 
 static void IMUDataReadyCB([[maybe_unused]] LSM6DSOXFIFO::imu_data_t *data)
 {
-    IMU.print();
+    IMU.print(data);
 }
 
 void setup()
@@ -60,6 +60,8 @@ void setup()
     Wire.begin();
     Wire.setClock(IIC_BUS_SPEED);
 
+    IMU.registerLoggingCallback(IMULoggingCB);
+    IMU.registerDataReadyCallback(IMUDataReadyCB);
     // Initialize sensors
     if (!IMU.initialize())
     {
@@ -67,9 +69,6 @@ void setup()
         while (1)
             ; // Halt execution
     }
-
-    IMU.registerLoggingCallback(IMULoggingCB);
-    IMU.registerDataReadyCallback(IMUDataReadyCB);
 
     ColourLED.setRGB(100, 100, 100);
     log("Starting...\n");

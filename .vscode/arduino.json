@@ -1,7 +1,7 @@
 {
     "port": "COM8",
     "board": "arduino:mbed_nano:nanorp2040connect",
-    "programmer": "arduino:cmsis-dap",
-    "sketch": "LSM6DSOX_FIFO_LED.ino",
-    "output": "../build"
+    "output": "../build",
+    "intelliSenseGen": "global",
+    "sketch": "LSM6DSOX_FIFO_LED.ino"
 }
