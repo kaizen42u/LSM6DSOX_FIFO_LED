@@ -78,6 +78,7 @@ void loop()
 {
     IMU.update();
 
+    // Show a rainbow LED effect
     static uint32_t last_led_millis = millis();
     const static uint8_t delta = 10;
     if (millis() - last_led_millis >= delta) {
@@ -87,5 +88,5 @@ void loop()
       last_led_millis += delta;
     }
 
-    delay(1); // FIFO continues batching while we sleep
+    delay(1); // FIFO continues batching while the MCU "sleeps"
 }
